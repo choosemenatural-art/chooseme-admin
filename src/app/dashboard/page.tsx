@@ -51,11 +51,11 @@ export default function DashboardPage() {
 
   const getStatusStyle = (status: string) => {
     switch (status.toLowerCase()) {
-      case 'delivered': return 'bg-[#dcfce7] text-[#16a34a]';
-      case 'processing': return 'bg-[#e0e7ff] text-[#4f46e5]';
-      case 'shipped': return 'bg-[#dbeafe] text-[#2563eb]';
+      case 'delivered': return 'bg-brand-600 text-white';
+      case 'processing': return 'bg-ink-200 text-ink-700';
+      case 'shipped': return 'bg-brand-100 text-brand-800';
       case 'cancelled': return 'bg-[#fee2e2] text-[#dc2626]';
-      default: return 'bg-slate-100 text-slate-600';
+      default: return 'bg-ink-100 text-ink-600';
     }
   };
   console.log("stats : ", stats)
@@ -75,8 +75,8 @@ export default function DashboardPage() {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
       ),
-      iconBg: 'bg-[#dcfce7]',
-      iconColor: 'text-[#16a34a]'
+      iconBg: 'bg-brand-100',
+      iconColor: 'text-brand-600'
     },
     {
       label: 'Total Orders',
@@ -84,8 +84,8 @@ export default function DashboardPage() {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
       ),
-      iconBg: 'bg-[#e0f2fe]',
-      iconColor: 'text-[#0284c7]'
+      iconBg: 'bg-brand-100',
+      iconColor: 'text-brand-600'
     },
     {
       label: 'Products',
@@ -102,8 +102,8 @@ export default function DashboardPage() {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
       ),
-      iconBg: 'bg-[#f3e8ff]',
-      iconColor: 'text-[#9333ea]'
+      iconBg: 'bg-brand-50',
+      iconColor: 'text-brand-700'
     },
     {
       label: 'Banners',
@@ -111,8 +111,8 @@ export default function DashboardPage() {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
       ),
-      iconBg: 'bg-[#fae8ff]',
-      iconColor: 'text-[#c026d3]'
+      iconBg: 'bg-brand-100',
+      iconColor: 'text-brand-600'
     },
     {
       label: 'Coupons',
@@ -120,8 +120,8 @@ export default function DashboardPage() {
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path><path d="M13 5v2"></path><path d="M13 17v2"></path><path d="M13 11v2"></path></svg>
       ),
-      iconBg: 'bg-[#ffedd5]',
-      iconColor: 'text-[#ea580c]'
+      iconBg: 'bg-brand-50',
+      iconColor: 'text-brand-800'
     },
     {
       label: 'Testimonials',
@@ -130,7 +130,7 @@ export default function DashboardPage() {
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
       ),
       iconBg: 'bg-transparent',
-      iconColor: 'text-[#111827]'
+      iconColor: 'text-ink-900'
     },
     {
       label: 'Customers',
@@ -146,7 +146,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="max-w-[1200px] mx-auto mt-2 pb-12 flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-brand-600"></div>
       </div>
     );
   }
@@ -155,53 +155,53 @@ export default function DashboardPage() {
     <div className="max-w-[1200px] mx-auto mt-2 pb-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
         {cards.map((card, idx) => (
-          <div key={idx} className="bg-white rounded-[24px] p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex items-center gap-6 border border-slate-100/60">
+          <div key={idx} className="bg-white rounded-[24px] p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex items-center gap-6 border border-ink-100/60">
             <div className={`w-[60px] h-[60px] rounded-[18px] ${card.iconBg} ${card.iconColor} flex items-center justify-center shrink-0`}>
               {card.icon}
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-[16px] font-semibold text-slate-500">{card.label}</span>
-              <span className="text-[32px] font-bold text-[#111827] leading-none">{card.value}</span>
+              <span className="text-[16px] font-semibold text-ink-500">{card.label}</span>
+              <span className="text-[32px] font-bold text-ink-900 leading-none">{card.value}</span>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 bg-white rounded-[24px] p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-slate-100/60">
+      <div className="mt-8 bg-white rounded-[24px] p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-ink-100/60">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-[20px] font-bold text-[#111827]">Recent Transactions</h2>
-          <a href="/dashboard/orders" className="text-[15px] font-bold text-[#3b60f6] hover:text-blue-700">View All</a>
+          <h2 className="text-[20px] font-bold text-ink-900">Recent Transactions</h2>
+          <a href="/dashboard/orders" className="text-[15px] font-bold text-brand-600 hover:text-brand-700">View All</a>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[800px]">
             <thead>
-              <tr className="bg-[#f8fafc]">
-                <th className="py-4 px-6 text-[14px] font-bold text-slate-500 rounded-l-[12px] w-[15%]">Order ID</th>
-                <th className="py-4 px-6 text-[14px] font-bold text-slate-500 w-[25%]">Customer</th>
-                <th className="py-4 px-6 text-[14px] font-bold text-slate-500 w-[20%]">Amount</th>
-                <th className="py-4 px-6 text-[14px] font-bold text-slate-500 w-[20%]">Status</th>
-                <th className="py-4 px-6 text-[14px] font-bold text-slate-500 rounded-r-[12px] w-[20%]">Date</th>
+              <tr className="bg-ink-50">
+                <th className="py-4 px-6 text-[14px] font-bold text-ink-500 rounded-l-[12px] w-[15%]">Order ID</th>
+                <th className="py-4 px-6 text-[14px] font-bold text-ink-500 w-[25%]">Customer</th>
+                <th className="py-4 px-6 text-[14px] font-bold text-ink-500 w-[20%]">Amount</th>
+                <th className="py-4 px-6 text-[14px] font-bold text-ink-500 w-[20%]">Status</th>
+                <th className="py-4 px-6 text-[14px] font-bold text-ink-500 rounded-r-[12px] w-[20%]">Date</th>
               </tr>
             </thead>
             <tbody>
               {stats?.recentOrders && stats.recentOrders.length > 0 ? (
                 stats.recentOrders.map((order) => (
-                  <tr key={order._id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 px-6 text-[15px] font-bold text-[#111827]">#{order._id.substring(0, 8)}</td>
-                    <td className="py-5 px-6 text-[15px] font-medium text-slate-600">{order.user?.name || 'Unknown'}</td>
-                    <td className="py-5 px-6 text-[15px] font-bold text-[#111827]">₹{order.total.toLocaleString()}</td>
+                  <tr key={order._id} className="border-b border-ink-100 last:border-0 hover:bg-ink-50/50 transition-colors">
+                    <td className="py-5 px-6 text-[15px] font-bold text-ink-900">#{order._id.substring(0, 8)}</td>
+                    <td className="py-5 px-6 text-[15px] font-medium text-ink-600">{order.user?.name || 'Unknown'}</td>
+                    <td className="py-5 px-6 text-[15px] font-bold text-ink-900">₹{order.total.toLocaleString()}</td>
                     <td className="py-5 px-6">
                       <span className={`inline-flex items-center px-3 py-1 rounded-full text-[12px] font-bold uppercase ${getStatusStyle(order.orderStatus)}`}>
                         {order.orderStatus}
                       </span>
                     </td>
-                    <td className="py-5 px-6 text-[15px] font-medium text-slate-500">{new Date(order.createdAt).toLocaleDateString()}</td>
+                    <td className="py-5 px-6 text-[15px] font-medium text-ink-500">{new Date(order.createdAt).toLocaleDateString()}</td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="py-8 text-center text-slate-500">No recent transactions</td>
+                  <td colSpan={5} className="py-8 text-center text-ink-500">No recent transactions</td>
                 </tr>
               )}
             </tbody>

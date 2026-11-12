@@ -60,29 +60,29 @@ export default function CustomersPage() {
 
   const getStatusStyle = (isActive: boolean) => {
     return isActive 
-      ? 'bg-[#dcfce7] text-[#16a34a]' 
+      ? 'bg-brand-100 text-brand-600' 
       : 'bg-[#fee2e2] text-[#dc2626]';
   };
 
   if (loading) {
     return (
       <div className="max-w-[1600px] mx-auto mt-2 pb-12 flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-brand-600"></div>
       </div>
     );
   }
 
   return (
     <div className="max-w-[1600px] mx-auto mt-2 pb-12">
-      <div className="bg-white rounded-[24px] p-6 lg:p-8 shadow-sm border border-slate-100/60 transition-all duration-300">
+      <div className="bg-white rounded-[24px] p-6 lg:p-8 shadow-sm border border-ink-100/60 transition-all duration-300">
         
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-[16px] font-medium text-slate-800">Customer Management</h2>
-          <span className="text-[13px] text-slate-500 font-medium">{customers.length} customers</span>
+          <h2 className="text-[16px] font-medium text-ink-800">Customer Management</h2>
+          <span className="text-[13px] text-ink-500 font-medium">{customers.length} customers</span>
         </div>
         
         {customers.length === 0 ? (
-          <div className="text-center py-16 text-slate-500">
+          <div className="text-center py-16 text-ink-500">
             <p className="text-lg font-medium">No customers yet</p>
             <p className="text-sm mt-2">Customers will appear here once they register.</p>
           </div>
@@ -90,22 +90,22 @@ export default function CustomersPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
-                <tr className="bg-[#f8fafc]">
-                  <th className="py-4 px-6 text-[13px] font-semibold text-slate-500 rounded-l-[12px] w-[25%]">Name</th>
-                  <th className="py-4 px-6 text-[13px] font-semibold text-slate-500 w-[30%]">Email</th>
-                  <th className="py-4 px-6 text-[13px] font-semibold text-slate-500 w-[15%]">Phone</th>
-                  <th className="py-4 px-6 text-[13px] font-semibold text-slate-500 w-[10%]">Joined</th>
-                  <th className="py-4 px-6 text-[13px] font-semibold text-slate-500 w-[10%]">Status</th>
-                  <th className="py-4 px-6 text-[13px] font-semibold text-slate-500 rounded-r-[12px] w-[10%]">Actions</th>
+                <tr className="bg-ink-50">
+                  <th className="py-4 px-6 text-[13px] font-semibold text-ink-500 rounded-l-[12px] w-[25%]">Name</th>
+                  <th className="py-4 px-6 text-[13px] font-semibold text-ink-500 w-[30%]">Email</th>
+                  <th className="py-4 px-6 text-[13px] font-semibold text-ink-500 w-[15%]">Phone</th>
+                  <th className="py-4 px-6 text-[13px] font-semibold text-ink-500 w-[10%]">Joined</th>
+                  <th className="py-4 px-6 text-[13px] font-semibold text-ink-500 w-[10%]">Status</th>
+                  <th className="py-4 px-6 text-[13px] font-semibold text-ink-500 rounded-r-[12px] w-[10%]">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {customers.map((customer) => (
-                  <tr key={customer._id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors">
-                    <td className="py-5 px-6 font-bold text-[#111827] text-[15px]">{customer.name}</td>
-                    <td className="py-5 px-6 text-[15px] text-slate-700 font-medium">{customer.email}</td>
-                    <td className="py-5 px-6 text-[15px] text-slate-700 font-medium">{customer.phone || '—'}</td>
-                    <td className="py-5 px-6 text-[14px] text-slate-500 font-medium">{new Date(customer.createdAt).toLocaleDateString()}</td>
+                  <tr key={customer._id} className="border-b border-ink-100 last:border-0 hover:bg-ink-50/50 transition-colors">
+                    <td className="py-5 px-6 font-bold text-ink-900 text-[15px]">{customer.name}</td>
+                    <td className="py-5 px-6 text-[15px] text-ink-700 font-medium">{customer.email}</td>
+                    <td className="py-5 px-6 text-[15px] text-ink-700 font-medium">{customer.phone || '—'}</td>
+                    <td className="py-5 px-6 text-[14px] text-ink-500 font-medium">{new Date(customer.createdAt).toLocaleDateString()}</td>
                     <td className="py-5 px-6">
                       <span className={`inline-flex items-center justify-center px-3 py-1 rounded-[6px] text-[11px] font-bold tracking-wide uppercase ${getStatusStyle(customer.isActive)}`}>
                         {customer.isActive ? 'ACTIVE' : 'BLOCKED'}
@@ -117,7 +117,7 @@ export default function CustomersPage() {
                         className={`w-[34px] h-[34px] rounded-[8px] flex items-center justify-center transition-colors ${
                           customer.isActive 
                             ? 'bg-[#fef2f2] text-[#ef4444] hover:bg-red-100' 
-                            : 'bg-[#dcfce7] text-[#16a34a] hover:bg-green-100'
+                            : 'bg-brand-100 text-brand-600 hover:bg-brand-100'
                         }`}
                         title={customer.isActive ? 'Block Customer' : 'Unblock Customer'}
                       >

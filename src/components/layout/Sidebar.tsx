@@ -77,12 +77,12 @@ function SidebarNav({ onNavClick, onLogout }: { onNavClick: () => void; onLogout
                 href={item.href}
                 onClick={onNavClick}
                 className={`flex items-center justify-between px-4 py-[14px] rounded-[14px] transition-colors ${isActive
-                    ? 'bg-blue-600 text-white font-semibold'
-                    : 'text-slate-400 hover:text-white font-medium'
+                    ? 'bg-brand-600 text-white font-semibold'
+                    : 'text-ink-400 hover:text-white font-medium'
                   }`}
               >
                 <div className="flex items-center gap-4">
-                  <span className={isActive ? "text-white" : "text-slate-400"}>{item.icon}</span>
+                  <span className={isActive ? "text-white" : "text-ink-400"}>{item.icon}</span>
                   <span className="text-[15px]">{item.name}</span>
                 </div>
                 {isActive && (
@@ -94,7 +94,7 @@ function SidebarNav({ onNavClick, onLogout }: { onNavClick: () => void; onLogout
         </nav>
       </div>
 
-      <div className="p-6 border-t border-slate-800/50">
+      <div className="p-6 border-t border-ink-800/50">
         <button
           onClick={onLogout}
           className="flex items-center gap-4 text-[#f87171] hover:text-red-300 transition-colors font-semibold text-[15px] px-2"
@@ -119,12 +119,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   return (
     <>
       {/* ===== DESKTOP SIDEBAR (always visible, in-flow) ===== */}
-      <aside className="hidden lg:flex w-[260px] bg-[#0f172a] text-slate-300 flex-col shrink-0">
-        <div className="flex items-center gap-4 h-[100px] px-8 shrink-0">
-          <div className="w-[42px] h-[42px] rounded-xl bg-blue-500 flex items-center justify-center text-white font-bold text-xl shrink-0">
-            H
+      <aside className="hidden lg:flex w-[260px] bg-brand-950 text-ink-300 flex-col shrink-0">
+        <div className="flex items-center gap-3 h-[100px] px-6 shrink-0">
+          <div className="w-[42px] h-[42px] rounded-xl bg-brand-500 flex items-center justify-center text-white font-bold text-xl shrink-0">
+            C
           </div>
-          <h1 className="text-[17px] font-bold text-white tracking-wide">HEEDY ADMIN</h1>
+          <h1 className="text-[15px] font-bold text-white tracking-wide whitespace-nowrap">CHOOSEME ADMIN</h1>
         </div>
         <SidebarNav onNavClick={() => { }} onLogout={handleLogout} />
       </aside>
@@ -139,19 +139,19 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Drawer */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-[260px] bg-[#0f172a] text-slate-300 flex flex-col transition-transform duration-300 ease-in-out lg:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-y-0 left-0 z-50 w-[260px] bg-brand-950 text-ink-300 flex flex-col transition-transform duration-300 ease-in-out lg:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
       >
         <div className="flex items-center justify-between h-[72px] px-6 shrink-0">
-          <div className="flex items-center gap-4">
-            <div className="w-[42px] h-[42px] rounded-xl bg-blue-500 flex items-center justify-center text-white font-bold text-xl shrink-0">
-              H
+          <div className="flex items-center gap-3">
+            <div className="w-[42px] h-[42px] rounded-xl bg-brand-500 flex items-center justify-center text-white font-bold text-xl shrink-0">
+              C
             </div>
-            <h1 className="text-[17px] font-bold text-white tracking-wide">HEEDY ADMIN</h1>
+            <h1 className="text-[15px] font-bold text-white tracking-wide whitespace-nowrap">CHOOSEME ADMIN</h1>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-ink-400 hover:text-white hover:bg-ink-800 transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>

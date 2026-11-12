@@ -87,23 +87,23 @@ export default function ContactsPage() {
 
   return (
     <div className="max-w-[1600px] mx-auto mt-2 pb-12">
-      <div className="bg-white rounded-[24px] p-6 lg:p-8 shadow-sm border border-slate-100/60 w-full transition-all duration-300">
+      <div className="bg-white rounded-[24px] p-6 lg:p-8 shadow-sm border border-ink-100/60 w-full transition-all duration-300">
         
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-[18px] font-bold text-slate-800 flex items-center gap-2">
-            <Mail className="text-blue-500" size={24} />
+          <h2 className="text-[18px] font-bold text-ink-800 flex items-center gap-2">
+            <Mail className="text-brand-500" size={24} />
             Contact Form Submissions
           </h2>
-          <div className="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-sm font-semibold">
+          <div className="bg-brand-50 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold">
             {contacts.length} Total
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {loading ? (
-            <div className="col-span-full py-12 text-center text-slate-500 font-medium">Loading messages...</div>
+            <div className="col-span-full py-12 text-center text-ink-500 font-medium">Loading messages...</div>
           ) : contacts.length === 0 ? (
-            <div className="col-span-full py-12 text-center text-slate-500 font-medium bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+            <div className="col-span-full py-12 text-center text-ink-500 font-medium bg-ink-50 rounded-2xl border border-dashed border-ink-200">
               No messages found yet.
             </div>
           ) : (
@@ -112,58 +112,58 @@ export default function ContactsPage() {
                 key={contact._id} 
                 className={`relative rounded-2xl p-6 border transition-all duration-200 ${
                   contact.isRead 
-                    ? 'bg-slate-50 border-slate-200/60' 
-                    : 'bg-white border-blue-200 shadow-[0_4px_20px_-4px_rgba(59,130,246,0.1)]'
+                    ? 'bg-ink-50 border-ink-200/60' 
+                    : 'bg-white border-brand-200 shadow-[0_4px_20px_-4px_rgba(0,154,71,0.1)]'
                 }`}
               >
                 {!contact.isRead && (
                   <span className="absolute -top-2 -right-2 flex h-4 w-4">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-4 w-4 bg-blue-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-4 w-4 bg-brand-500"></span>
                   </span>
                 )}
                 
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    <h3 className="font-bold text-slate-900 text-lg">{contact.name}</h3>
-                    <div className="flex items-center gap-1.5 text-slate-500 text-sm mt-1">
+                    <h3 className="font-bold text-ink-900 text-lg">{contact.name}</h3>
+                    <div className="flex items-center gap-1.5 text-ink-500 text-sm mt-1">
                       <Mail size={14} />
-                      <a href={`mailto:${contact.email}`} className="hover:text-blue-600 hover:underline">{contact.email}</a>
+                      <a href={`mailto:${contact.email}`} className="hover:text-brand-600 hover:underline">{contact.email}</a>
                     </div>
                     {contact.phone && (
-                      <div className="flex items-center gap-1.5 text-slate-500 text-sm mt-1">
+                      <div className="flex items-center gap-1.5 text-ink-500 text-sm mt-1">
                         <Phone size={14} />
-                        <a href={`tel:${contact.phone}`} className="hover:text-blue-600 hover:underline">{contact.phone}</a>
+                        <a href={`tel:${contact.phone}`} className="hover:text-brand-600 hover:underline">{contact.phone}</a>
                       </div>
                     )}
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-4">
+                <div className="flex items-center gap-1.5 text-ink-400 text-xs mb-4">
                   <Calendar size={12} />
                   {new Date(contact.createdAt).toLocaleString()}
                 </div>
 
                 {contact.subject && (
-                  <div className="text-sm font-semibold text-slate-700 mb-2 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">
+                  <div className="text-sm font-semibold text-ink-700 mb-2 bg-ink-100 px-3 py-1.5 rounded-lg inline-block">
                     {contact.subject}
                   </div>
                 )}
                 
-                <div className="text-slate-600 text-sm leading-relaxed mb-6 bg-white p-4 rounded-xl border border-slate-100 whitespace-pre-wrap h-[120px] overflow-y-auto form-scrollbar">
+                <div className="text-ink-600 text-sm leading-relaxed mb-6 bg-white p-4 rounded-xl border border-ink-100 whitespace-pre-wrap h-[120px] overflow-y-auto form-scrollbar">
                   {contact.message}
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
+                <div className="flex items-center gap-3 pt-4 border-t border-ink-100">
                   {!contact.isRead ? (
                     <button 
                       onClick={() => handleMarkAsRead(contact._id)}
-                      className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-600 px-4 py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-colors"
+                      className="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-600 px-4 py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-colors"
                     >
                       <Check size={16} /> Mark as Read
                     </button>
                   ) : (
-                    <div className="flex-1 text-slate-400 text-sm font-medium flex items-center justify-center gap-2">
+                    <div className="flex-1 text-ink-400 text-sm font-medium flex items-center justify-center gap-2">
                       <Check size={16} /> Read
                     </div>
                   )}
@@ -182,20 +182,20 @@ export default function ContactsPage() {
 
       {/* Delete Confirmation Modal */}
       {deleteModal.isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-900/40 backdrop-blur-sm">
           <div className="bg-white rounded-[24px] p-8 max-w-[400px] w-full shadow-2xl transform transition-all">
             <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
               <Trash2 className="text-red-500" size={28} />
             </div>
-            <h3 className="text-[20px] font-bold text-center text-slate-900 mb-2">Delete Message?</h3>
-            <p className="text-slate-500 text-center text-[15px] mb-8 leading-relaxed">
+            <h3 className="text-[20px] font-bold text-center text-ink-900 mb-2">Delete Message?</h3>
+            <p className="text-ink-500 text-center text-[15px] mb-8 leading-relaxed">
               Are you sure you want to delete this message? This action cannot be undone.
             </p>
             <div className="flex gap-3">
               <button 
                 onClick={() => setDeleteModal({ isOpen: false, contactId: null })}
                 disabled={deleting}
-                className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 h-[48px] rounded-[14px] font-bold text-[15px] transition-colors"
+                className="flex-1 bg-ink-100 hover:bg-ink-200 text-ink-700 h-[48px] rounded-[14px] font-bold text-[15px] transition-colors"
               >
                 Cancel
               </button>

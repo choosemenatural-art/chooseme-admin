@@ -279,19 +279,19 @@ export default function ProductsPage() {
       <div className="flex flex-col xl:flex-row gap-6 items-start">
         
         {/* Left Column: Product Catalog */}
-        <div className="flex-1 min-w-0 bg-white rounded-[24px] p-6 lg:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-slate-100/60 w-full transition-all duration-300 xl:max-h-[calc(100vh-140px)] overflow-y-auto">
+        <div className="flex-1 min-w-0 bg-white rounded-[24px] p-6 lg:p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-ink-100/60 w-full transition-all duration-300 xl:max-h-[calc(100vh-140px)] overflow-y-auto">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-[18px] font-semibold text-slate-800">Product Catalog</h2>
+            <h2 className="text-[18px] font-semibold text-ink-800">Product Catalog</h2>
             {!isAddProductOpen ? (
               <button 
                 onClick={openAddForm}
-                className="bg-[#3b60f6] hover:bg-blue-700 text-white px-5 py-2.5 rounded-[12px] font-medium text-[15px] flex items-center gap-2 transition-colors"
+                className="bg-brand-600 hover:bg-brand-700 text-white px-5 py-2.5 rounded-[12px] font-medium text-[15px] flex items-center gap-2 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 Add New Product
               </button>
             ) : (
-              <div className="text-sm font-medium text-slate-500">
+              <div className="text-sm font-medium text-ink-500">
                 {products.length} Products
               </div>
             )}
@@ -300,21 +300,21 @@ export default function ProductsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
-                <tr className="bg-[#f8fafc]">
-                  <th className="py-4 px-6 text-[14px] font-semibold text-slate-500 rounded-l-[12px] w-[8%]">Image</th>
-                  <th className="py-4 px-6 text-[14px] font-semibold text-slate-500 w-[30%]">Name</th>
-                  <th className="py-4 px-6 text-[14px] font-semibold text-slate-500 w-[12%]">Category</th>
-                  <th className="py-4 px-6 text-[14px] font-semibold text-slate-500 w-[14%]">Starting Price</th>
+                <tr className="bg-ink-50">
+                  <th className="py-4 px-6 text-[14px] font-semibold text-ink-500 rounded-l-[12px] w-[8%]">Image</th>
+                  <th className="py-4 px-6 text-[14px] font-semibold text-ink-500 w-[30%]">Name</th>
+                  <th className="py-4 px-6 text-[14px] font-semibold text-ink-500 w-[12%]">Category</th>
+                  <th className="py-4 px-6 text-[14px] font-semibold text-ink-500 w-[14%]">Starting Price</th>
 
-                  <th className="py-4 px-6 text-[14px] font-semibold text-slate-500 w-[10%]">Status</th>
-                  <th className="py-4 px-6 text-[14px] font-semibold text-slate-500 rounded-r-[12px] w-[14%]">Actions</th>
+                  <th className="py-4 px-6 text-[14px] font-semibold text-ink-500 w-[10%]">Status</th>
+                  <th className="py-4 px-6 text-[14px] font-semibold text-ink-500 rounded-r-[12px] w-[14%]">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
-                  <tr><td colSpan={7} className="py-8 text-center text-slate-500">Loading products...</td></tr>
+                  <tr><td colSpan={7} className="py-8 text-center text-ink-500">Loading products...</td></tr>
                 ) : products.length === 0 ? (
-                  <tr><td colSpan={7} className="py-8 text-center text-slate-500">No products found. Add your first product!</td></tr>
+                  <tr><td colSpan={7} className="py-8 text-center text-ink-500">No products found. Add your first product!</td></tr>
                 ) : products.map((product) => {
                   const getImageUrl = (url: string) => {
                     if (!url) return 'https://via.placeholder.com/50';
@@ -327,27 +327,27 @@ export default function ProductsPage() {
                   };
 
                   return (
-                  <tr key={product._id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/50 transition-colors">
+                  <tr key={product._id} className="border-b border-ink-100 last:border-0 hover:bg-ink-50/50 transition-colors">
                     <td className="py-5 px-6">
-                      <img src={getImageUrl(product.images[0])} alt={product.name} className="w-[50px] h-[50px] rounded-[10px] object-cover bg-slate-100" />
+                      <img src={getImageUrl(product.images[0])} alt={product.name} className="w-[50px] h-[50px] rounded-[10px] object-cover bg-ink-100" />
                     </td>
-                    <td className="py-5 px-6 text-[15px] font-bold text-[#111827] leading-snug pr-8">{product.name}</td>
-                    <td className="py-5 px-6 text-[15px] font-medium text-slate-600">{product.category}</td>
+                    <td className="py-5 px-6 text-[15px] font-bold text-ink-900 leading-snug pr-8">{product.name}</td>
+                    <td className="py-5 px-6 text-[15px] font-medium text-ink-600">{product.category}</td>
                     <td className="py-5 px-6">
                       {product.variants.length > 0 ? (
                         <div className="flex flex-col">
-                          <span className="text-[15px] font-bold text-[#3b60f6]">₹{product.variants[0].price}</span>
+                          <span className="text-[15px] font-bold text-brand-600">₹{product.variants[0].price}</span>
                           {product.variants[0].oldPrice && (
-                            <span className="text-[13px] font-medium text-slate-400 line-through">₹{product.variants[0].oldPrice}</span>
+                            <span className="text-[13px] font-medium text-ink-400 line-through">₹{product.variants[0].oldPrice}</span>
                           )}
                         </div>
                       ) : (
-                        <span className="text-slate-400">-</span>
+                        <span className="text-ink-400">-</span>
                       )}
                     </td>
 
                     <td className="py-5 px-6">
-                      <span className="text-[15px] font-medium text-slate-600 w-12 block leading-tight">
+                      <span className="text-[15px] font-medium text-ink-600 w-12 block leading-tight">
                         {product.status}
                       </span>
                     </td>
@@ -355,7 +355,7 @@ export default function ProductsPage() {
                       <div className="flex items-center gap-3">
                         <button 
                           onClick={() => handleEdit(product)}
-                          className="w-[38px] h-[38px] rounded-[10px] bg-[#eff6ff] text-[#3b82f6] hover:bg-blue-100 flex items-center justify-center transition-colors"
+                          className="w-[38px] h-[38px] rounded-[10px] bg-brand-50 text-brand-500 hover:bg-brand-100 flex items-center justify-center transition-colors"
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         </button>
@@ -374,13 +374,13 @@ export default function ProductsPage() {
 
         {/* Right Column: Add/Edit Product Form */}
         {isAddProductOpen && (
-          <div className="w-full xl:w-[480px] shrink-0 bg-white shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-slate-100/60 rounded-[24px] xl:sticky xl:top-[120px] overflow-hidden flex flex-col xl:max-h-[calc(100vh-140px)] transition-all duration-300">
+          <div className="w-full xl:w-[480px] shrink-0 bg-white shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-ink-100/60 rounded-[24px] xl:sticky xl:top-[120px] overflow-hidden flex flex-col xl:max-h-[calc(100vh-140px)] transition-all duration-300">
             {/* Header */}
-            <div className="flex items-center justify-between px-8 py-6 border-b border-slate-100 shrink-0">
-              <h2 className="text-[20px] font-bold text-[#111827]">{editingId ? 'Edit Product' : 'Add New Product'}</h2>
+            <div className="flex items-center justify-between px-8 py-6 border-b border-ink-100 shrink-0">
+              <h2 className="text-[20px] font-bold text-ink-900">{editingId ? 'Edit Product' : 'Add New Product'}</h2>
               <button 
                 onClick={() => { setIsAddProductOpen(false); setEditingId(null); }}
-                className="w-[34px] h-[34px] rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors"
+                className="w-[34px] h-[34px] rounded-full bg-ink-100 flex items-center justify-center text-ink-600 hover:bg-ink-200 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </button>
@@ -390,15 +390,15 @@ export default function ProductsPage() {
             <div className="flex-1 overflow-y-auto px-8 py-6 space-y-6 form-scrollbar">
               {/* Product Name */}
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Product Name</label>
-                <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full h-[50px] px-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-[15px]" />
+                <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Product Name</label>
+                <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all text-[15px]" />
               </div>
 
               {/* Category */}
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Category</label>
+                <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Category</label>
                 <div className="relative">
-                  <select value={category} onChange={e => setCategory(e.target.value)} className="w-full h-[50px] px-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none text-[15px] text-slate-700">
+                  <select value={category} onChange={e => setCategory(e.target.value)} className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all appearance-none text-[15px] text-ink-700">
                     {dbCategories.filter(c => c.status === 'ACTIVE').map(c => (
                       <option key={c._id} value={c.name}>{c.name}</option>
                     ))}
@@ -406,7 +406,7 @@ export default function ProductsPage() {
                       <option value="">No Active Categories</option>
                     )}
                   </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-ink-400">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                   </div>
                 </div>
@@ -415,8 +415,8 @@ export default function ProductsPage() {
               {/* Product Variants */}
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <label className="block text-[14px] font-bold text-slate-900">Product Variants</label>
-                  <button onClick={handleAddVariant} className="bg-[#3b60f6] hover:bg-blue-700 text-white px-3 py-1.5 rounded-[8px] text-[13px] font-semibold flex items-center gap-1.5 transition-colors">
+                  <label className="block text-[14px] font-bold text-ink-900">Product Variants</label>
+                  <button onClick={handleAddVariant} className="bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-[8px] text-[13px] font-semibold flex items-center gap-1.5 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                     Add Variant
                   </button>
@@ -424,9 +424,9 @@ export default function ProductsPage() {
                 
                 {/* Variant Headers */}
                 <div className="flex gap-2 mb-2 px-3">
-                  <div className="flex-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Size / Vol</div>
-                  <div className="flex-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Offer Price</div>
-                  <div className="flex-1 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Actual Price</div>
+                  <div className="flex-1 text-[11px] font-bold text-ink-500 uppercase tracking-wider">Size / Vol</div>
+                  <div className="flex-1 text-[11px] font-bold text-ink-500 uppercase tracking-wider">Offer Price</div>
+                  <div className="flex-1 text-[11px] font-bold text-ink-500 uppercase tracking-wider">Actual Price</div>
 
                   {variants.length > 1 && <div className="w-8 shrink-0"></div>}
                 </div>
@@ -436,10 +436,10 @@ export default function ProductsPage() {
                     const priceError = !!(v.oldPrice && v.oldPrice > 0 && v.oldPrice < v.price);
                     return (
                       <div key={i} className="flex flex-col gap-1">
-                        <div className={`flex gap-2 items-center bg-slate-50 p-2 rounded-[12px] border ${priceError ? 'border-red-200' : 'border-slate-100'}`}>
-                          <input type="text" placeholder="e.g. 50ml" value={v.volume} onChange={(e) => handleVariantChange(i, 'volume', e.target.value)} className="flex-1 min-w-0 h-[42px] px-3 rounded-[8px] border border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-[14px] transition-all bg-white" />
-                          <input type="number" placeholder="₹ Offer" value={v.price === 0 ? '' : v.price} onChange={(e) => handleVariantChange(i, 'price', Number(e.target.value))} className={`flex-1 min-w-0 h-[42px] px-3 rounded-[8px] border outline-none text-[14px] transition-all bg-white ${priceError ? 'border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 text-red-600 bg-red-50/30' : 'border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}`} />
-                          <input type="number" placeholder="₹ Actual" value={v.oldPrice === 0 ? '' : v.oldPrice} onChange={(e) => handleVariantChange(i, 'oldPrice', Number(e.target.value))} className={`flex-1 min-w-0 h-[42px] px-3 rounded-[8px] border outline-none text-[14px] transition-all bg-white ${priceError ? 'border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 text-red-600 bg-red-50/30' : 'border-slate-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500'}`} />
+                        <div className={`flex gap-2 items-center bg-ink-50 p-2 rounded-[12px] border ${priceError ? 'border-red-200' : 'border-ink-100'}`}>
+                          <input type="text" placeholder="e.g. 50ml" value={v.volume} onChange={(e) => handleVariantChange(i, 'volume', e.target.value)} className="flex-1 min-w-0 h-[42px] px-3 rounded-[8px] border border-ink-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none text-[14px] transition-all bg-white" />
+                          <input type="number" placeholder="₹ Offer" value={v.price === 0 ? '' : v.price} onChange={(e) => handleVariantChange(i, 'price', Number(e.target.value))} className={`flex-1 min-w-0 h-[42px] px-3 rounded-[8px] border outline-none text-[14px] transition-all bg-white ${priceError ? 'border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 text-red-600 bg-red-50/30' : 'border-ink-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500'}`} />
+                          <input type="number" placeholder="₹ Actual" value={v.oldPrice === 0 ? '' : v.oldPrice} onChange={(e) => handleVariantChange(i, 'oldPrice', Number(e.target.value))} className={`flex-1 min-w-0 h-[42px] px-3 rounded-[8px] border outline-none text-[14px] transition-all bg-white ${priceError ? 'border-red-400 focus:border-red-500 focus:ring-1 focus:ring-red-500 text-red-600 bg-red-50/30' : 'border-ink-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500'}`} />
 
                           {variants.length > 1 && (
                             <button onClick={() => handleRemoveVariant(i)} className="w-8 h-[42px] shrink-0 flex items-center justify-center text-red-400 hover:text-red-600 hover:bg-red-50 rounded-[8px] transition-colors">
@@ -460,31 +460,31 @@ export default function ProductsPage() {
 
               {/* Description */}
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Description</label>
-                <textarea value={description} onChange={e => setDescription(e.target.value)} className="w-full h-[120px] p-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none text-[15px]"></textarea>
+                <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Description</label>
+                <textarea value={description} onChange={e => setDescription(e.target.value)} className="w-full h-[120px] p-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all resize-none text-[15px]"></textarea>
               </div>
 
               {/* Star Rating & Reviews */}
               <div className="flex gap-4">
                 <div className="flex-1">
-                  <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Star Rating</label>
-                  <input type="number" max="5" min="0" step="0.1" value={starRating} onChange={e => setStarRating(e.target.value === '' ? '' : Number(e.target.value))} className="w-full h-[50px] px-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-[15px]" />
+                  <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Star Rating</label>
+                  <input type="number" max="5" min="0" step="0.1" value={starRating} onChange={e => setStarRating(e.target.value === '' ? '' : Number(e.target.value))} className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all text-[15px]" />
                 </div>
                 <div className="flex-1">
-                  <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Reviews Count</label>
-                  <input type="number" value={reviewsCount} onChange={e => setReviewsCount(e.target.value === '' ? '' : Number(e.target.value))} className="w-full h-[50px] px-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-[15px]" />
+                  <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Reviews Count</label>
+                  <input type="number" value={reviewsCount} onChange={e => setReviewsCount(e.target.value === '' ? '' : Number(e.target.value))} className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all text-[15px]" />
                 </div>
               </div>
 
               {/* Offer Text & Key Features */}
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Offer Text (e.g. FLAT 35% OFF)</label>
-                <input type="text" value={offerText} onChange={e => setOfferText(e.target.value)} placeholder="Leave empty for default" className="w-full h-[50px] px-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-slate-400 text-[15px]" />
+                <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Offer Text (e.g. FLAT 35% OFF)</label>
+                <input type="text" value={offerText} onChange={e => setOfferText(e.target.value)} placeholder="Leave empty for default" className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all placeholder:text-ink-400 text-[15px]" />
               </div>
 
               <div>
-                <label className="block text-[14px] font-bold text-slate-900 mb-2.5">Key Features (Benefits, one per line or comma separated)</label>
-                <textarea value={keyFeatures} onChange={e => setKeyFeatures(e.target.value)} placeholder="e.g. Brightens Skin&#10;Reduces dark spots" className="w-full h-[100px] p-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none text-[15px]"></textarea>
+                <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Key Features (Benefits, one per line or comma separated)</label>
+                <textarea value={keyFeatures} onChange={e => setKeyFeatures(e.target.value)} placeholder="e.g. Brightens Skin&#10;Reduces dark spots" className="w-full h-[100px] p-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all resize-none text-[15px]"></textarea>
               </div>
 
               {/* Show on Landing Page */}
@@ -492,7 +492,7 @@ export default function ProductsPage() {
                 const currentLandingPageCount = products.filter(p => p.showOnLandingPage && p._id !== editingId).length;
                 const limitReached = currentLandingPageCount >= 5 && !showOnLandingPage;
                 return (
-                  <div className={`flex flex-col gap-1 bg-slate-50 p-4 rounded-[12px] border border-slate-100 ${limitReached ? 'opacity-60' : ''}`}>
+                  <div className={`flex flex-col gap-1 bg-ink-50 p-4 rounded-[12px] border border-ink-100 ${limitReached ? 'opacity-60' : ''}`}>
                     <div className="flex items-center gap-3">
                       <input 
                         type="checkbox" 
@@ -500,9 +500,9 @@ export default function ProductsPage() {
                         checked={showOnLandingPage}
                         disabled={limitReached}
                         onChange={(e) => setShowOnLandingPage(e.target.checked)} 
-                        className={`w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500 ${limitReached ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                        className={`w-5 h-5 rounded border-ink-300 text-brand-600 focus:ring-brand-500 ${limitReached ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                       />
-                      <label htmlFor="showOnLandingPage" className={`text-[14px] font-bold text-slate-900 ${limitReached ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+                      <label htmlFor="showOnLandingPage" className={`text-[14px] font-bold text-ink-900 ${limitReached ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
                         Show on Landing Page
                       </label>
                     </div>
@@ -516,11 +516,11 @@ export default function ProductsPage() {
               {/* Image URLs & Files */}
               <div>
                 <div className="flex items-center justify-between mb-2.5">
-                  <label className="block text-[14px] font-bold text-slate-900">Upload Images (Max 5)</label>
-                  <span className="text-[12px] font-medium text-slate-500">{imageFiles.length}/5 selected</span>
+                  <label className="block text-[14px] font-bold text-ink-900">Upload Images (Max 5)</label>
+                  <span className="text-[12px] font-medium text-ink-500">{imageFiles.length}/5 selected</span>
                 </div>
                 
-                <div className="border-2 border-dashed border-slate-200 rounded-[12px] p-6 text-center hover:bg-slate-50 transition-colors relative mb-4">
+                <div className="border-2 border-dashed border-ink-200 rounded-[12px] p-6 text-center hover:bg-ink-50 transition-colors relative mb-4">
                   <input 
                     type="file" 
                     multiple 
@@ -530,20 +530,20 @@ export default function ProductsPage() {
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed" 
                   />
                   <div className="flex flex-col items-center gap-2 pointer-events-none">
-                    <div className="w-10 h-10 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-brand-50 text-brand-500 rounded-full flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                     </div>
-                    <p className="text-[14px] font-medium text-slate-600">
+                    <p className="text-[14px] font-medium text-ink-600">
                       {imageFiles.length >= 5 ? 'Maximum limit reached' : 'Click or drag files here to upload'}
                     </p>
-                    <p className="text-[12px] text-slate-400">JPG, PNG, WEBP up to 5MB each</p>
+                    <p className="text-[12px] text-ink-400">JPG, PNG, WEBP up to 5MB each</p>
                   </div>
                 </div>
 
                 {previewUrls.length > 0 && (
                   <div className="grid grid-cols-5 gap-3 mb-4">
                     {previewUrls.map((url, index) => (
-                      <div key={index} className="relative aspect-square rounded-[8px] overflow-hidden border border-slate-200 group">
+                      <div key={index} className="relative aspect-square rounded-[8px] overflow-hidden border border-ink-200 group">
                         <img src={url} alt={`Preview ${index}`} className="w-full h-full object-cover" />
                         <button 
                           onClick={() => removeImageFile(index)}
@@ -556,17 +556,17 @@ export default function ProductsPage() {
                   </div>
                 )}
                 
-                <label className="block text-[13px] font-bold text-slate-900 mb-2.5 mt-4 pt-4 border-t border-slate-100">Or provide Image URLs (comma separated)</label>
-                <input type="text" value={imageUrls} onChange={e => setImageUrls(e.target.value)} placeholder="https://image1.jpg, https://image2.jpg" className="w-full h-[50px] px-4 rounded-[12px] border border-slate-200 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all placeholder:text-slate-400 text-[14px]" />
+                <label className="block text-[13px] font-bold text-ink-900 mb-2.5 mt-4 pt-4 border-t border-ink-100">Or provide Image URLs (comma separated)</label>
+                <input type="text" value={imageUrls} onChange={e => setImageUrls(e.target.value)} placeholder="https://image1.jpg, https://image2.jpg" className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all placeholder:text-ink-400 text-[14px]" />
               </div>
             </div>
 
             {/* Footer */}
-            <div className="px-8 py-6 border-t border-slate-100 bg-white shrink-0">
+            <div className="px-8 py-6 border-t border-ink-100 bg-white shrink-0">
               <button 
                 onClick={handleSubmit}
                 disabled={saving}
-                className={`w-full ${editingId ? 'bg-[#10b981] hover:bg-emerald-600' : 'bg-[#3b60f6] hover:bg-blue-700'} text-white h-[50px] rounded-[12px] font-bold text-[16px] transition-colors shadow-sm ${saving ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`w-full ${editingId ? 'bg-brand-500 hover:bg-brand-600' : 'bg-brand-600 hover:bg-brand-700'} text-white h-[50px] rounded-[12px] font-bold text-[16px] transition-colors shadow-sm ${saving ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {saving ? 'Saving...' : (editingId ? 'Update Product' : 'Create Product')}
               </button>
@@ -578,20 +578,20 @@ export default function ProductsPage() {
 
       {/* Delete Confirmation Modal */}
       {deleteModal.isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-900/40 backdrop-blur-sm">
           <div className="bg-white rounded-[24px] p-8 max-w-[400px] w-full shadow-2xl transform transition-all">
             <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
             </div>
-            <h3 className="text-[20px] font-bold text-center text-slate-900 mb-2">Delete Product?</h3>
-            <p className="text-slate-500 text-center text-[15px] mb-8 leading-relaxed">
+            <h3 className="text-[20px] font-bold text-center text-ink-900 mb-2">Delete Product?</h3>
+            <p className="text-ink-500 text-center text-[15px] mb-8 leading-relaxed">
               Are you sure you want to delete this product? This action cannot be undone.
             </p>
             <div className="flex gap-3">
               <button 
                 onClick={() => setDeleteModal({ isOpen: false, productId: null })}
                 disabled={deleting}
-                className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 h-[48px] rounded-[14px] font-bold text-[15px] transition-colors"
+                className="flex-1 bg-ink-100 hover:bg-ink-200 text-ink-700 h-[48px] rounded-[14px] font-bold text-[15px] transition-colors"
               >
                 Cancel
               </button>
