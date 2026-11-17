@@ -14,9 +14,9 @@ export default function Navbar({ onMenuClick }: NavbarProps) {
   else if (pathname.includes('/categories')) title = 'Categories';
   else if (pathname.includes('/orders')) title = 'Orders';
   else if (pathname.includes('/banners')) title = 'Banners';
-  else if (pathname.includes('/coupons')) title = 'Coupons';
-  else if (pathname.includes('/testimonials')) title = 'Testimonials';
   else if (pathname.includes('/customers')) title = 'Customers';
+  else if (pathname.includes('/contacts')) title = 'Contacts';
+  else if (pathname.includes('/faqs')) title = 'FAQs';
 
   return (
     <header className="bg-white border-b border-ink-200 h-[64px] lg:h-[100px] flex items-center justify-between px-4 sm:px-6 lg:px-8 z-40 sticky top-0 shrink-0">

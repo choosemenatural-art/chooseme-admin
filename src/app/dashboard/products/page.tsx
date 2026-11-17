@@ -19,7 +19,6 @@ interface IProduct {
   variants: IVariant[];
   starRating: number;
   reviewsCount: number;
-  offerText?: string;
   keyFeatures?: string;
   images: string[];
   status: string;
@@ -42,7 +41,6 @@ export default function ProductsPage() {
   const [description, setDescription] = useState('');
   const [starRating, setStarRating] = useState<number | ''>(5);
   const [reviewsCount, setReviewsCount] = useState<number | ''>(0);
-  const [offerText, setOfferText] = useState('');
   const [keyFeatures, setKeyFeatures] = useState('');
   const [showOnLandingPage, setShowOnLandingPage] = useState(false);
   const [imageUrls, setImageUrls] = useState('');
@@ -94,7 +92,6 @@ export default function ProductsPage() {
     setDescription('');
     setStarRating(5);
     setReviewsCount(0);
-    setOfferText('');
     setKeyFeatures('');
     setShowOnLandingPage(false);
     setImageUrls('');
@@ -111,7 +108,6 @@ export default function ProductsPage() {
     setDescription(product.description);
     setStarRating(product.starRating);
     setReviewsCount(product.reviewsCount);
-    setOfferText(product.offerText || '');
     setKeyFeatures(product.keyFeatures || '');
     setShowOnLandingPage(product.showOnLandingPage || false);
     
@@ -197,7 +193,6 @@ export default function ProductsPage() {
     formData.append('variants', JSON.stringify(variants));
     formData.append('starRating', String(starRating === '' ? 0 : starRating));
     formData.append('reviewsCount', String(reviewsCount === '' ? 0 : reviewsCount));
-    formData.append('offerText', offerText);
     formData.append('keyFeatures', keyFeatures);
     formData.append('showOnLandingPage', String(showOnLandingPage));
 
@@ -476,12 +471,7 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              {/* Offer Text & Key Features */}
-              <div>
-                <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Offer Text (e.g. FLAT 35% OFF)</label>
-                <input type="text" value={offerText} onChange={e => setOfferText(e.target.value)} placeholder="Leave empty for default" className="w-full h-[50px] px-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all placeholder:text-ink-400 text-[15px]" />
-              </div>
-
+              {/* Key Features */}
               <div>
                 <label className="block text-[14px] font-bold text-ink-900 mb-2.5">Key Features (Benefits, one per line or comma separated)</label>
                 <textarea value={keyFeatures} onChange={e => setKeyFeatures(e.target.value)} placeholder="e.g. Brightens Skin&#10;Reduces dark spots" className="w-full h-[100px] p-4 rounded-[12px] border border-ink-200 bg-ink-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all resize-none text-[15px]"></textarea>

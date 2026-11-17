@@ -61,8 +61,8 @@ export default function BannersPage() {
 
   const handleEditClick = (banner: IBanner) => {
     setEditingId(banner._id);
-    setTitle(banner.title);
-    setDescription(banner.description);
+    setTitle(banner.title || '');
+    setDescription(banner.description || '');
     setImage(banner.image);
     setImageFile(null);
     setMobileImage(banner.mobileImage || '');
@@ -78,8 +78,8 @@ export default function BannersPage() {
   };
 
   const handleSubmit = async () => {
-    if (!title || !description || (!image && !imageFile) || (!mobileImage && !mobileImageFile)) {
-      return toast.error('Title, description, and both images are required');
+    if ((!image && !imageFile) || (!mobileImage && !mobileImageFile)) {
+      return toast.error('Both laptop and phone images are required');
     }
 
     const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3MB
@@ -213,7 +213,7 @@ export default function BannersPage() {
                           <span className="text-[10px] text-ink-500 font-semibold uppercase">Laptop</span>
                           <img 
                             src={banner.image && banner.image.startsWith('/') ? `${process.env.NEXT_PUBLIC_BACKEND_URL?.replace('/api', '') || 'http://localhost:5000'}${banner.image}` : banner.image} 
-                            alt={banner.title} 
+                            alt={banner.title || 'Banner'}
                             className="w-[120px] h-[60px] rounded-[8px] object-cover bg-ink-100 shadow-sm border border-ink-200" 
                           />
                         </div>
@@ -222,15 +222,15 @@ export default function BannersPage() {
                             <span className="text-[10px] text-ink-500 font-semibold uppercase">Mobile</span>
                             <img 
                               src={banner.mobileImage.startsWith('/') ? `${process.env.NEXT_PUBLIC_BACKEND_URL?.replace('/api', '') || 'http://localhost:5000'}${banner.mobileImage}` : banner.mobileImage} 
-                              alt={`${banner.title} mobile`} 
+                              alt={`${banner.title || 'Banner'} mobile`}
                               className="w-[40px] h-[60px] rounded-[8px] object-cover bg-ink-100 shadow-sm border border-ink-200" 
                             />
                           </div>
                         )}
                       </div>
                     </td>
-                    <td className="py-5 px-6 font-bold text-ink-900 text-[15px]">{banner.title}</td>
-                    <td className="py-5 px-6 text-[15px] text-ink-700 font-medium leading-snug">{banner.description}</td>
+                    <td className="py-5 px-6 font-bold text-ink-900 text-[15px]">{banner.title || <span className="font-normal text-ink-400">—</span>}</td>
+                    <td className="py-5 px-6 text-[15px] text-ink-700 font-medium leading-snug">{banner.description || <span className="text-ink-400">—</span>}</td>
                     <td className="py-5 px-6">
                       <div className="flex items-center gap-3">
                         <button 
@@ -274,7 +274,7 @@ export default function BannersPage() {
             <div className="flex-1 overflow-y-auto px-6 lg:px-8 pb-8 space-y-6 form-scrollbar">
               {/* Banner Title */}
               <div>
-                <label className="block text-[13px] font-bold text-ink-900 mb-2.5">Banner Title</label>
+                <label className="block text-[13px] font-bold text-ink-900 mb-2.5">Banner Title <span className="font-normal text-ink-500">(optional)</span></label>
                 <input 
                   type="text" 
                   value={title}
@@ -285,7 +285,7 @@ export default function BannersPage() {
 
               {/* Description */}
               <div>
-                <label className="block text-[13px] font-bold text-ink-900 mb-2.5">Description</label>
+                <label className="block text-[13px] font-bold text-ink-900 mb-2.5">Description <span className="font-normal text-ink-500">(optional)</span></label>
                 <input 
                   type="text" 
                   value={description}
